@@ -19,12 +19,14 @@ async def handle_buttons(callback: CallbackQuery):
     button_number = callback.data.replace("button", "")
     
     if button_number == "1":
-        await callback.message.edit_text(
+        try:
+            await callback.message.edit_text(
             "Вы нажали кнопку 1.",
             reply_markup=main_menu_kb
         )
-        
-        await callback.answer()
+            await callback.answer()
+        except Exception:
+            await callback.answer()
 
     elif button_number == "2":
         await callback.answer("Вы нажали кнопку 2", show_alert=False)

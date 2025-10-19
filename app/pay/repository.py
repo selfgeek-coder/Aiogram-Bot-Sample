@@ -1,11 +1,13 @@
-from config import crypto
+from aiocryptopay import AioCryptoPay, Networks
+
+from config import crypto_token, default_asset
+
+crypto = AioCryptoPay(token=crypto_token, network=Networks.MAIN_NET)
 
 class PayRepository:
-    DEFAULT_ASSET = 'USDT'
-
     @staticmethod
     async def create_invoice(amount: float,
-                             asset: str = DEFAULT_ASSET) -> dict:
+                             asset: str = default_asset) -> dict:
         """Создает платеж amount в токене 'DEFAULT_ASSET' по умолчению"""
 
         async with crypto:
