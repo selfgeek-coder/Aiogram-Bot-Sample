@@ -1,0 +1,10 @@
+from aiocryptopay import AioCryptoPay, Networks
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+crypto = AioCryptoPay(token=os.getenv("CRYPTO_PAY_TOKEN"),
+                      network=Networks.MAIN_NET)
+bot_token = os.getenv("BOT_TOKEN")
+owner_id = int(os.getenv("OWNER_ID"))
